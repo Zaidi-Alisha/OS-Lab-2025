@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Check if directory path is provided
 if [ $# -ne 1 ]; then
     echo "Usage: $0 directory_path"
     exit 1
@@ -15,10 +14,9 @@ if [ ! -d "$source_dir" ]; then
     exit 1
 fi
 
-# Create backup directory
+#create backup
 mkdir -p "$backup_dir"
 
-# Copy files and directories
 cp -r "$source_dir"/* "$backup_dir"
 
 # Count files and directories
