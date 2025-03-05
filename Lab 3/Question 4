@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Check if argument is provided
 if [ $# -ne 1 ]; then
     echo "Usage: $0 file_or_directory"
     exit 1
@@ -8,7 +7,7 @@ fi
 
 item=$1
 
-# Check file/directory status
+#check file or dir status
 if [ -f "$item" ]; then
     echo "$item is a file."
     ls -l "$item"
