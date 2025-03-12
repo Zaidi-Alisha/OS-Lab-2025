@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstdlib> // For atoi()
+#include <vector>
+#include <iomanip> // For setting precision
+
+int main(int argc, char *argv[]) {
+    // Error check: Ensure at least one number is provided
+    if (argc < 2) {
+        std::cerr << "Error: Please provide at least one integer as a command-line argument.\n";
+        return EXIT_FAILURE;
+    }
+
+    std::vector<int> numbers;  // Store valid integers
+    int sum = 0;
+
+    // Parse command-line arguments
+    for (int i = 1; i < argc; i++) {
+        char *end;
+        int num = std::strtol(argv[i], &end, 10); // Convert to integer
+
+        // Error check: If conversion fails (non-numeric input)
+        if (*end != '\0') {
+            std::cerr << "Error: Invalid integer input '" << argv[i] << "'\n";
+            return EXIT_FAILURE;
+        }
+
+        numbers.push_back(num);
+        sum += num;
+    }
+
+    // Compute average
+    double average = static_cast<double>(sum) / numbers.size();
+
+    // Display results
+    std::cout << "Sum: " << sum << std::endl;
+    std::cout << "Average: " << std::fixed << std::setprecision(2) << average << std::endl;
+
+    return EXIT_SUCCESS;
+}
